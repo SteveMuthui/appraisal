@@ -1,0 +1,36 @@
+<body>
+ <link rel="stylesheet" type="text/css" href="externalformatting.css">
+<?php
+require_once('conn.php');//call connet code
+//Retrieving records from the database and display in results web page
+$result=mysqli_query($myconn,"SELECT * FROM user_credentials");
+
+			echo "<table border=1>";
+			echo "<tr>";
+			echo "<th>Fullnames</th>";
+			echo "<th>Username</th>";
+			echo"<th>Delete User</th>";
+			echo"<th>Update User</th>";
+			echo "</tr>";
+
+
+				//fetch and loop the records
+					while($row=mysqli_fetch_array($result))
+						{
+							$id=$row['no'];//specify the primary key
+							echo "<tr>";
+							echo "<td>".$row['fullnames']."</td>";
+							echo "<td>".$row['username']."</td>";
+							echo"<td><a href='delete_users.php?no=$id'>Delete</a></td>";//create link to delete.php file 
+							echo"<td><a href='user_update_form.php?no=$id'>Update</a></td>";
+ 						}				
+ 										
+							echo "</tr>";
+			echo "</table>";
+			echo "<br><a href='create_users.html'>New User</a>";
+			echo "</br>";
+			echo "<br><a href='logout.php'>Logout</a>";
+			echo "</br>";
+			echo "<br><a href='graphs.html'>Home</a>";
+?>
+</body>
