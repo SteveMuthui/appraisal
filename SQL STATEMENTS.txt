@@ -8,6 +8,29 @@ CREATE TABLE IF NOT EXISTS `shifts` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `leave` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reason` varchar(256)  NULL,
+  `startDate` text  NULL,
+  `endDate` text  NULL,
+  `userId` int(11)  NULL,	
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `feedback` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `period` varchar(256) NOT NULL,
+  `rating` text NOT NULL,
+  `clients` text NOT NULL,
+  `comments` text NOT NULL,
+  `userId` int(11) NOT NULL,	
+  `created` datetime NOT NULL,
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(256) NOT NULL,
